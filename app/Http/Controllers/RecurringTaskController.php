@@ -74,7 +74,7 @@ class RecurringTaskController
         $validatedData = $request->validated();
 
         $validatedData['category_id'] = $resolveCategory->execute(
-            $validatedData['category_id'],
+            $validatedData['category_id'] ?? null,
             $request->user()
         );
 

@@ -15,7 +15,7 @@ class CreateTask
     public function execute(array $taskData, User $user)
     {
         $taskData['category_id'] = $this->resolveCategory->execute(
-            $taskData['category_id'],
+            $taskData['category_id'] ?? null,
             $user
         );
 

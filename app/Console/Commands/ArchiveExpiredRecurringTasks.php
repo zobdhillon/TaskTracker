@@ -18,11 +18,11 @@ class ArchiveExpiredRecurringTasks extends Command
     {
         $expired = RecurringTask::query()
             ->whereNotNull('end_date')
-            ->where('end_date', '<', today())
+            ->where('end_date', '<', now()->startOfDay())
             ->delete();
 
         if ($expired > 0) {
-            $this->info('Archived '.$expired.' recurring Tasks.');
+            $this->info('Archived ' . $expired . ' recurring Tasks.');
         } else {
             $this->info('No expired recurring tasks found to archive.');
         }

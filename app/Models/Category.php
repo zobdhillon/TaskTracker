@@ -42,8 +42,6 @@ class Category extends Model
         'name',
     ];
 
-    protected static function booted() {}
-
     public function uniqueIds(): array
     {
         return ['uuid'];
@@ -63,5 +61,12 @@ class Category extends Model
     {
 
         return $this->hasMany(Task::class);
+    }
+
+    protected static function booted()
+    {
+        static::deleting(function ($category) {
+            $category->tasks()->delete();
+        });
     }
 }
