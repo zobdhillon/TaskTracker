@@ -1,0 +1,57 @@
+# Laravel environments
+.env
+.env.*
+
+# Laravel storage
+/storage/*.key
+/storage/*.log
+/storage/*.cache
+/storage/framework/cache/data
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+/storage/app/public
+/storage/debugbar
+
+# Vendor
+/vendor
+
+# Node
+/node_modules
+/npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+/public/build
+/public/hot
+/public/storage
+
+# IDEs and editors
+/.idea
+/.vscode
+/.phpstorm.meta.php
+/.phpunit.cache
+/.phpunit.result.cache
+/.phpactor.json
+/.fleet
+/.zed
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Composer
+/composer.lock
+/auth.json
+
+# Laravel helpers
+_ide_helper.php
+
+# Homestead
+Homestead.json
+Homestead.yaml
+
+# Misc
+*.log
