@@ -22,7 +22,7 @@ class ArchiveExpiredRecurringTasksTest extends TestCase
 
         $this->artisan('app:archive-expired-recurring-tasks')->assertSuccessful();
 
-        $this->assertDatabaseMissing('recurring_tasks', ['id' => $expiredTask->id]);
+        $this->assertSoftDeleted('recurring_tasks', ['id' => $expiredTask->id]);
     }
 
     #[Test]
@@ -35,7 +35,7 @@ class ArchiveExpiredRecurringTasksTest extends TestCase
 
         $this->artisan('app:archive-expired-recurring-tasks')->assertSuccessful();
 
-        $this->assertDatabaseCount('recurring_tasks', 0);
+        $this->assertEquals(5, RecurringTask::onlyTrashed()->count());
     }
 
     #[Test]
@@ -87,7 +87,7 @@ class ArchiveExpiredRecurringTasksTest extends TestCase
 
         $this->artisan('app:archive-expired-recurring-tasks')->assertSuccessful();
 
-        $this->assertDatabaseMissing('recurring_tasks', ['id' => $taskEndedYesterday->id]);
+        $this->assertSoftDeleted('recurring_tasks', ['id' => $taskEndedYesterday->id]);
     }
 
     #[Test]
@@ -103,7 +103,7 @@ class ArchiveExpiredRecurringTasksTest extends TestCase
 
         $this->artisan('app:archive-expired-recurring-tasks')->assertSuccessful();
 
-        $this->assertDatabaseMissing('recurring_tasks', ['id' => $expiredTask->id]);
+        $this->assertSoftDeleted('recurring_tasks', ['id' => $expiredTask->id]);
         $this->assertDatabaseHas('recurring_tasks', ['id' => $activeTask->id]);
     }
 

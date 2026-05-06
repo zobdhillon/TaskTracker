@@ -95,7 +95,7 @@ class GenerateRecurringTasksTest extends TestCase
         $user = User::factory()->create();
         $weekday = now()->next('Monday');
 
-        $this->travel($weekday)->day();
+        $this->travelTo($weekday);
 
         RecurringTask::factory()
             ->for($user)
@@ -133,7 +133,7 @@ class GenerateRecurringTasksTest extends TestCase
         $user = User::factory()->create();
         $monday = now()->next('Monday');
 
-        $this->travel($monday)->day();
+        $this->travelTo($monday);
 
         RecurringTask::factory()
             ->for($user)
@@ -195,7 +195,7 @@ class GenerateRecurringTasksTest extends TestCase
         $user = User::factory()->create();
         $dateWithDay14 = now()->setDay(14)->startOfDay();
 
-        $this->travel($dateWithDay14)->day();
+        $this->travelTo($dateWithDay14);
 
         RecurringTask::factory()
             ->for($user)

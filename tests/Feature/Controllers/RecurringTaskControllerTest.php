@@ -327,7 +327,7 @@ class RecurringTaskControllerTest extends TestCase
         $response = $this->actingAs($user)->delete(route('recurring-tasks.destroy', $recurringTask));
 
         $response->assertNoContent();
-        $this->assertDatabaseMissing('recurring_tasks', ['id' => $recurringTask->id]);
+        $this->assertSoftDeleted('recurring_tasks', ['id' => $recurringTask->id]);
     }
 
     #[Test]
